@@ -119,22 +119,30 @@ public class EmployeeTest {
 	 * Testea el bono segun el tipo de trabajador 'USD'
 	 */
 	@Test
-	public void bonoSegunTipoDeTrabajadorUsd() {
+	public void bonoWorkerUsd() {
 		Employee worker = new Employee(500.0f , "USD", 0.1f, EmployeeType.Worker);
+	    assertEquals(386.0, worker.CalculateYearBonus(), 1);
+	
+		
+	}
+	@Test
+	public void bonoSupervisorUsd() {
+		
 	    Employee supervisor = new Employee(800.0f , "USD", 0.2f, EmployeeType.Supervisor);
+	    assertEquals(993.0,  supervisor.CalculateYearBonus(), 1);	
+	}
+	
+
+	@Test
+	public void bonoManagerUsd() {
+		
 	    Employee manager = new Employee(1500.0f , "USD", 0.3f, EmployeeType.Manager);
 	    
-	    
-	    if(worker.getCurrency().equals("USD") && supervisor.getCurrency().equals("USD") && manager.getCurrency().equals("USD")) {
-	    	assertEquals(386.0, worker.CalculateYearBonus(), 1);
-	        assertEquals(993.0, supervisor.CalculateYearBonus(), 1);
-	        assertEquals(1886.0, manager.CalculateYearBonus(), 1);
-	    }
-	   
+	    assertEquals(1886.0, manager.CalculateYearBonus(), 1);
+
 	   
 		
 	}
-	
 	
 	/**
 	 * Testea el bono segun el tipo de trabajador 'not USD'
@@ -142,11 +150,9 @@ public class EmployeeTest {
 	@Test
 	public void bonoSegunTipoDeTrabajadorNotUsd() {
 		Employee worker = new Employee(500.0f , "EUR", 0.1f, EmployeeType.Worker);
-	    
-	    if(!worker.getCurrency().equals("USD") ) {
-	    	assertEquals(386.0, worker.CalculateYearBonus(), 1);
+	    assertEquals(386.0, worker.CalculateYearBonus(), 1);
 	        
-	    }
+	    
 	
 	}
 	

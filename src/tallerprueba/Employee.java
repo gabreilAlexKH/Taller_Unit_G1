@@ -23,9 +23,7 @@ public class Employee
         this.employeeType = employeeType;
     }
     
-    public String getCurrency() {
-        return currency;
-    }
+
     
     //calcula el salario dependiendo del tipo de trabajador 
     //y entrega el décimo correspondiente cada 2 meses
