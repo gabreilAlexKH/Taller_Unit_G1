@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -113,4 +114,43 @@ public class EmployeeTest {
 		}
 			
 	}
+	
+	/**
+	 * Testea el bono segun el tipo de trabajador 'USD'
+	 */
+	@Test
+	public void bonoSegunTipoDeTrabajadorUsd() {
+		Employee worker = new Employee(500.0f , "USD", 0.1f, EmployeeType.Worker);
+	    Employee supervisor = new Employee(800.0f , "USD", 0.2f, EmployeeType.Supervisor);
+	    Employee manager = new Employee(1500.0f , "USD", 0.3f, EmployeeType.Manager);
+	    
+	    
+	    if(worker.getCurrency().equals("USD") && supervisor.getCurrency().equals("USD") && manager.getCurrency().equals("USD")) {
+	    	assertEquals(386.0, worker.CalculateYearBonus(), 1);
+	        assertEquals(993.0, supervisor.CalculateYearBonus(), 1);
+	        assertEquals(1886.0, manager.CalculateYearBonus(), 1);
+	    }
+	   
+	   
+		
+	}
+	
+	
+	/**
+	 * Testea el bono segun el tipo de trabajador 'not USD'
+	 */
+	@Test
+	public void bonoSegunTipoDeTrabajadorNotUsd() {
+		Employee worker = new Employee(500.0f , "EUR", 0.1f, EmployeeType.Worker);
+	    
+	    if(!worker.getCurrency().equals("USD") ) {
+	    	assertEquals(386.0, worker.CalculateYearBonus(), 1);
+	        
+	    }
+	
+	}
+	
+
+
+
 }
