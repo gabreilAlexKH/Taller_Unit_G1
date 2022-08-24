@@ -58,10 +58,10 @@ public class EmployeeTest {
 	@Test
 	public void testSalarioSupervisor() {
 		
-		Employee empleado = new Employee(750 , "USD" , 0.25F , EmployeeType.Supervisor);
+		Employee empleado = new Employee(750 , "USD" ,0.5f , EmployeeType.Supervisor);
 				
 		float salario = empleado.cs();
-		float salarioEsperado = 750 + (0.25F * 0.35F);
+		float salarioEsperado = 750.175f;
 		
 		if(month%2 == 0) {
 			assertEquals( (float) salarioEsperado , salario , 0);
@@ -79,10 +79,10 @@ public class EmployeeTest {
 	@Test
 	public void testSalarioManager() {
 		
-		Employee empleado = new Employee(1000 , "USD" , 0.3F , EmployeeType.Manager);
+		Employee empleado = new Employee(1000 , "USD" , 0.8f , EmployeeType.Manager);
 		
 		float salario = empleado.cs();
-		float salarioEsperado = 1000 + (0.3F * 0.7F);
+		float salarioEsperado = 1000.56f;
 		
 		if(month%2 == 0) {
 			assertEquals( (float) salarioEsperado , salario , 0);
@@ -100,10 +100,10 @@ public class EmployeeTest {
 	@Test
 	public void testSalarioNoUSD() {
 		
-		Employee empleado = new Employee(1000 , "GBP" , 0.4F , EmployeeType.Manager);
+		Employee empleado = new Employee(1000 , "GBP" , 0.4f , EmployeeType.Manager);
 		
 		float salario = empleado.cs();
-		float salarioEsperado = (1000 * 0.95F) + (0.4F * 0.7F);
+		float salarioEsperado = 950.28f;
 		
 		if(month%2 == 0) {
 			assertEquals( (float) salarioEsperado , salario , 0);
