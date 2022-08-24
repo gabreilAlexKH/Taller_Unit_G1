@@ -87,4 +87,25 @@ public class EmployeeTest {
 		}
 			
 	}
+	
+	/**
+	 * Testea que el salario  sea calculado cuando no sean dolares
+	 */
+	@Test
+	public void testSalarioNoUSD() {
+		
+		Employee empleado = new Employee(1000 , "GBP" , 0.4F , EmployeeType.Manager);
+		
+		float salario = empleado.cs();
+		float salarioEsperado = (1000 * 0.95F) + (0.4F * 0.7F);
+		
+		if(month%2 == 0) {
+			assertEquals( (float) salarioEsperado , salario , 0);
+			
+		}else {
+			salarioEsperado += rmu/12*2;
+			assertEquals( (float) salarioEsperado  , salario , 0);
+		}
+			
+	}
 }
