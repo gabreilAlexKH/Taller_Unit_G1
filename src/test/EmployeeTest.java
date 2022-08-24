@@ -26,6 +26,11 @@ public class EmployeeTest {
 		
 	}
 	
+	@Test
+	public void testConstructor() {
+		assertNotNull(new Employee(300, "USD", (float) 0.1, EmployeeType.Supervisor));
+	}
+	
 	
 	/**
 	 * Testea que el salario de Worker sea calculado correctamente asumiendo que se usan USD
