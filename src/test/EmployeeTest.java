@@ -2,7 +2,10 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.time.Clock;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
@@ -26,10 +29,12 @@ public class EmployeeTest {
 
 		
 	}
-	
+	/**
+	 * Test para el constructor de la clase Employee
+	 */
 	@Test
 	public void testConstructor() {
-		assertNotNull(new Employee(300, "USD", (float) 0.1, EmployeeType.Supervisor));
+		assertNotNull(new Employee(300, "USD", 0.1f, EmployeeType.Supervisor));
 	}
 	
 	
@@ -119,14 +124,14 @@ public class EmployeeTest {
 	 * Testea el bono segun el tipo de trabajador 'USD'
 	 */
 	@Test
-	public void bonoWorkerUsd() {
+	public void testBonoWorkerUsd() {
 		Employee worker = new Employee(500.0f , "USD", 0.1f, EmployeeType.Worker);
 	    assertEquals(386.0, worker.CalculateYearBonus(), 1);
 	
 		
 	}
 	@Test
-	public void bonoSupervisorUsd() {
+	public void testBonoSupervisorUsd() {
 		
 	    Employee supervisor = new Employee(800.0f , "USD", 0.2f, EmployeeType.Supervisor);
 	    assertEquals(993.0,  supervisor.CalculateYearBonus(), 1);	
@@ -134,7 +139,7 @@ public class EmployeeTest {
 	
 
 	@Test
-	public void bonoManagerUsd() {
+	public void testBonoManagerUsd() {
 		
 	    Employee manager = new Employee(1500.0f , "USD", 0.3f, EmployeeType.Manager);
 	    
@@ -145,10 +150,10 @@ public class EmployeeTest {
 	}
 	
 	/**
-	 * Testea el bono segun el tipo de trabajador 'not USD'
+	 * Testea el bono si currency no es 'USD'
 	 */
 	@Test
-	public void bonoSegunTipoDeTrabajadorNotUsd() {
+	public void testBonoNotUsd() {
 		Employee worker = new Employee(500.0f , "EUR", 0.1f, EmployeeType.Worker);
 	    assertEquals(386.0, worker.CalculateYearBonus(), 1);
 	        
